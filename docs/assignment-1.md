@@ -3,6 +3,8 @@ title: "COSC 4353 Assignment 1"
 author: "Travis Baylor, Sammy Melendez, Khang Pham"
 ---
 
+## [Click here](https://github.com/sammito1/fuel) to view the GitHub Repository
+
 ### 1. *Discuss your initial thoughts in details on how you will design this application?*
 
 We will design the application by implementing each one required component at a time. The first two parts are login and client registration. If the client is a first-time user, then the client registration will be implemented to help the client to get their new username and password. Otherwise, the client who is a returning user will login with their username and password. The third part is client profile management. After the client registers, they will have to login for the first time with their username and password to complete their new profile. Each profile will consist of name, location, birth date, and social security number. The fourth part is fuel quote form with pricing module. The client must put in the following required information: client location (in-state or out-of-state), client history (existing customer with previous purchase or new), gallons requested, and company profit margin (%). Once the client enters all required information, the pricing module calculates the rate and provides total cost. The fifth and final part is the fuel quote history. The fuel quote history will show the fuel rate so far for each client per day. But, the required components do not have to be done in order as we will work on which component is most important to implement for the application. We will also share ideas on how we implement the components.
