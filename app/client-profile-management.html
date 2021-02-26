@@ -46,49 +46,53 @@
         <div class="form-group row py-2">
           <div class="col-3">
             <label for="full-name">Full Name*</label>
-            <input type="word" id="full-name" class="form-control" value=0 min=0 max=50 required>
+            <input type="word" id="full-name" class="form-control" min=1 max=50 required>
             <div class="invalid-feedback">Please enter valid full name.</div>
           </div>
         </div>
 	<div class="form-group row py-2">
           <div class="col-3">
             <label for="address-1">Address 1*</label>
-            <input type="word" id="address-1" class="form-control" value=0 min=0 max=100 required>
+            <input type="word" id="address-1" class="form-control" min=1 max=100 required>
             <div class="invalid-feedback">Please enter valid address.</div>
           </div>
         </div>
 	<div class="form-group row py-2">
           <div class="col-3">
             <label for="address-2">Address 2</label>
-            <input type="word" id="address-2" class="form-control" value=0 min=0 max=100 required>
-            <div class="invalid-feedback">Please enter valid address.</div>
+            <input type="word" id="address-2">
           </div>
         </div>
 	<div class="form-group row py-2">
           <div class="col-3">
             <label for="city">City*</label>
-            <input type="word" id="city" class="form-control" value=0 min=0 max=100 required>
+            <input type="word" id="city" class="form-control" min=1 max=100 required>
             <div class="invalid-feedback">Please enter valid city name.</div>
           </div>
         </div>
         <div class="form-group row py-2">
           <div class="col-3">
             <label for="state">State*</label>
-            <select name="state" id = "state">
-               <option value="2 character code required">2 character code required</option>
-            </select>
+            <select name="state" id="state" class="form-control" min=0 max=2 required>
+               <option value=""></option>
+               <option value="al">AL</option>
+               <option value="la">LA</option>
+               <option value="tx">TX</option>
+            </select><div class="comment">2 character state code required</div>
+            <div class="invalid-feedback">Please enter valid state code.</div>
           </div> 
         </div>
         <div class="form-group row py-2">
           <div class="col-3">
             <label for="zipcode">Zipcode*</label>
-            <input type="number" id="zipcode" class="form-control" value=0 min=5 max=9 required>
+            <input type="decimals" id="zipcode" class="form-control" min=5 max=9 required><div class="comment">Please type in at least 5 characters</div>
             <div class="invalid-feedback">Please enter valid zipcode.</div>
           </div>
         </div>
-        <button type="save changes" class="btn btn-primary">Save Changes</button>
+        <div class="comment">'*' - Required</div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
         <button type="cancel" class="btn btn-outline-secondary">Cancel</button>
-      </confirm>
+      </form>
     </div>
 
     <!-- Default Bootstrap JavaScript -->
@@ -97,18 +101,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-  <!-- Confirm Changes -->
+    <!-- Form Validation -->
     <script>
-      var confirm = document.querySelector('.save-changes');
-      form.addEventListener('save-changes', function(event) {
+      var form = document.querySelector('.needs-validation');
+      form.addEventListener('submit', function(event) {
         if (form.checkValidity() === false) {
           event.preventDefault();
           event.stopPropagation();
         }
-        form.classList.add('was-saved');
+        form.classList.add('was-validated');
       })
       form.addEventListener('cancel', function(event) {
-        form.classList.remove('was-saved');
+        form.classList.remove('was-validated');
       })
     </script>
   </body>
