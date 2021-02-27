@@ -15,7 +15,7 @@ Before implementing our front-end in code, each team member took responsibility 
 
 After completion of the mockups, we implemented our designs in HTML/CSS/JS individually as separate web pages and reviewed them as a team. Thus, we used incremental development by building our web pages only *after* we designed the basic layout required of each page. 
 
-### *3. List what front end technologies you are using and why. Who is responsible for doing what in your group?
+### *3. List what front end technologies you are using and why. Who is responsible for doing what in your group?*
 
 ### *4. Provide screen shots of each page of the front end.*
 
