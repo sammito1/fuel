@@ -24,30 +24,39 @@ We are using HTML, CSS, and JavaScript for our application because HTML is used 
 Screenshots can also be found in the `docs/screenshots` directory.
 
 **Homepage (logged out):**
+
 ![image](https://user-images.githubusercontent.com/24760425/109367843-d91fdb00-785c-11eb-94a9-35655d2fa404.png)
 
 **Homepage (logged in):**
+
 ![image](https://user-images.githubusercontent.com/24760425/109367860-e89f2400-785c-11eb-8918-c8b243d3c388.png)
 
 **Registration:**
+
 ![image](https://user-images.githubusercontent.com/24760425/109367905-066c8900-785d-11eb-916f-5e65bf47c9b5.png)
 
 **Login:**
+
 ![image](https://user-images.githubusercontent.com/24760425/109367924-12f0e180-785d-11eb-8087-f833488cb231.png)
 
 **Client Profile Management:**
+
 ![image](https://user-images.githubusercontent.com/24760425/109367937-1e440d00-785d-11eb-81fb-eba93707707e.png)
 
 **Client Profile Management (invalid input):**
+
 ![image](https://user-images.githubusercontent.com/24760425/109367966-2ef48300-785d-11eb-8106-c36eb96dcf28.png)
 
 **Fuel Quote Form:**
+
 ![image](https://user-images.githubusercontent.com/24760425/109367992-3fa4f900-785d-11eb-9f9e-fdcfac567046.png)
 
 **Fuel Quote Form (invalid input):**
+
 ![image](https://user-images.githubusercontent.com/24760425/109368008-4fbcd880-785d-11eb-837e-56095becae3b.png)
 
 **Fuel Quote History:**
+
 ![image](https://user-images.githubusercontent.com/24760425/109368031-5e0af480-785d-11eb-82eb-34a314ef8e16.png)
 
 ### *5. List who did what within the group.*
