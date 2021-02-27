@@ -17,6 +17,8 @@ After completion of the mockups, we implemented our designs in HTML/CSS/JS indiv
 
 ### *3. List what front end technologies you are using and why. Who is responsible for doing what in your group?*
 
+We are using HTML, CSS, and JavaScript for our application because HTML is used for designing and implementing various relatively standalone pages for the application, CSS is used to add style to the pages, and JavaScript is used to add basic dynamic functionality to the pages. Also, HTML, CSS, and JavaScript are the technologies used for frontend development. In our group, Travis is responsible for fuel quote form functionality, Sammy is responsible for login/registration and homepage, and Khang is responsible for fuel quote history and client profile management.
+
 ### *4. Provide screen shots of each page of the front end.*
 
 Screenshots can also be found in the `docs/screenshots` directory.
@@ -57,6 +59,7 @@ Screenshots can also be found in the `docs/screenshots` directory.
 * Khang:
   * Designed the following mockups: `4-client-profile-management.png`, `5-fuel-quote-history.png`.
   * Implemented the following web pages: `client-profile-management.html`, `fuel-quote-history.html`.
+  * Answered Question 3.
 * Sammy: 
   * Designed the following mockups: `1-homepage.png`, `2-login.png`, `3-register.png`.
   * Implemented the following web pages: `login.html`, `register.html`, `homepage-logged-in.html`, `homepage-logged-out.html`.
