@@ -55,8 +55,8 @@ Screenshots can also be found in the `docs/screenshots` directory.
   * Implemented the following web pages: `fuel-quote-form.html`.
   * Answered Question 4.
 * Khang:
-  * Designed the following mockups: '4-client-profile-management.png', '5-fuel-quote-history.png'.
-  * Implemented the following web pages: 'client-profile-management.html', 'fuel-quote-history.html'.
+  * Designed the following mockups: `4-client-profile-management.png`, `5-fuel-quote-history.png`.
+  * Implemented the following web pages: `client-profile-management.html`, `fuel-quote-history.html`.
 * Sammy: 
   * Designed the following mockups: `1-homepage.png`, `2-login.png`, `3-register.png`.
   * Implemented the following web pages: `login.html`, `register.html`, `homepage-logged-in.html`, `homepage-logged-out.html`.
