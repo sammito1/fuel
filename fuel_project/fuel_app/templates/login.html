@@ -1,42 +1,8 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% extends "base.html" %}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+{% block title %} Login / Fuel {% endblock %}
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="static/styles.css">
-
-    <title>Login</title>
-  </head>
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-      <!-- Logo -->
-      <a class="navbar-brand" href="#">Homepage</a>
-
-      <!-- Expanding menu -->
-      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar-menu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Navbar contents -->
-      <div class="collapse navbar-collapse" id="navbar-menu">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Log in</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Register</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
+{% block content %}
     <!-- Login form -->
     <form class="container mt-5 text-center" id="login-form">
       <h1 class="h3 mb-4 font-weight-normal"> Client login </h1>
@@ -52,19 +18,4 @@
       </div>
       <button type="submit" class="btn btn-primary">Log in</button>
     </form>
-    <!-- Footer -->
-    <footer class="navbar fixed-bottom navbar-light bg-light">
-      <div>
-          <span class="text-muted"> Made with &#x2615; in Houston, TX </span>
-          <a href="https://www.github.com/sammito1/fuel"><img id="github-logo" src="./static/icons8-github-24.png"></a>
-      </div>
-    </footer> 
-
-    <!-- Optional JavaScript -->
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  </body>
-</html>
+{% endblock %}

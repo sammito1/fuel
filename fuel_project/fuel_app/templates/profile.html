@@ -1,44 +1,8 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% extends "base.html" %}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+{% block title %} Profile / Fuel {% endblock %}
 
-    <!-- Tab title -->
-    <title>Client Profile Management</title>
-  </head>
-
-  <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-      <!-- Logo -->
-      <a class="navbar-brand" href="#">Homepage</a>
-
-      <!-- Expanding menu for narrow screens  -->
-      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Remaining navbar contents -->
-      <div class="collapse navbar-collapse" id="navbarMenu">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Quote</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Logout</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
+{% block content %}
     <!-- Client Profile Management -->
     <div class="container py-3">
       <form action="" class="needs-validation" novalidate>
@@ -60,7 +24,7 @@
 	      <div class="form-group row py-2">
           <div class="col-3">
             <label for="address-2">Address 2</label>
-            <input type="word" id="address-2">
+            <input type="word" id="address-2" class="form-control">
           </div>
         </div>
 	      <div class="form-group row py-2">
@@ -95,20 +59,6 @@
       </form>
     </div>
 
-    <!-- Footer -->
-    <footer class="navbar fixed-bottom navbar-light bg-light">
-      <div>
-          <span class="text-muted"> Made with &#x2615; in Houston, TX </span>
-          <a href="https://www.github.com/sammito1/fuel"><img id="github-logo" src="./static/icons8-github-24.png"></a>
-      </div>
-    </footer>
-
-    <!-- Default Bootstrap JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
     <!-- Form Validation -->
     <script>
       var form = document.querySelector('.needs-validation');
@@ -123,6 +73,5 @@
         form.classList.remove('was-validated');
       })
     </script>
-  </body>
 
-</html>
+{% endblock %}

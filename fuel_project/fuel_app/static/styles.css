@@ -9,7 +9,7 @@
 #homepage-jumbotron
 {
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.60) 0%,
-    rgba(0, 0, 0, 0.60) 100%), url(houston.jpg);
+    rgba(0, 0, 0, 0.60) 100%), url("./images/houston.jpg");
     background-size: cover;
     background-position: center;
     height: 100%;

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %} Quote / Fuel {% endblock %}
+
+{% block content %}
+    <!-- Fuel Quote Form -->
+    <div class="container py-3">
+      <form action="" class="needs-validation" novalidate>
+        <h1 class="mb-3">New Fuel Quote</h1>
+        <div class="form-group row py-2">
+          <div class="col-3">
+            <label for="gallons">Gallons Requested</label>
+            <input type="number" id="gallons" class="form-control" value=0 min=0 required>
+            <div class="invalid-feedback">Please enter a valid number.</div>
+          </div>
+        </div>
+        <div class="form-group py-2">
+          <label for="address">Delivery Address</label><br>
+          <b>TBD</b>
+        </div>
+        <div class="form-group row py-2">
+          <div class="col-3">
+            <label for="delivery-date">Delivery Date</label>
+            <input type="date" id="delivery-date" class="form-control" required>
+            <div class="invalid-feedback">Please select a date.</div>
+          </div> 
+        </div>
+        <div class="form-group py-2">
+          <label for="price-per-gallon">Price per Gallon</label><br>
+          <b>TBD</b>
+        </div>
+        <div class="form-group py-2">
+          <label for="total">Total Amount Due</label><br>
+          <b>TBD</b>
+        </div>  
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+      </form>
+    </div>
+    
+    <!-- Form Validation -->
+    <script>
+      var form = document.querySelector('.needs-validation');
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      })
+      form.addEventListener('reset', function(event) {
+        form.classList.remove('was-validated');
+      })
+    </script>
+{% endblock %}
