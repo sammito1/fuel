@@ -4,8 +4,9 @@
 
 {% block content %}
     <!-- Login form -->
-    <form class="container mt-5 text-center" id="login-form">
+    <form action="login" method="post" class="container mt-5 text-center" id="login-form">
       <h1 class="h3 mb-4 font-weight-normal"> Client login </h1>
+    <!--
       <div class="form-group">
         <input type="text" class="form-control" maxlength="20" id="input-username" placeholder="Username" required>
       </div>
@@ -16,6 +17,9 @@
         <input type="checkbox" class="form-check-input" id="check-remember">
         <label class="form-check-label" for="exampleCheck1">Remember me</label>
       </div>
+    -->
+    {% csrf_token %}
+    {{ form }}
       <button type="submit" class="btn btn-primary">Log in</button>
     </form>
 {% endblock %}

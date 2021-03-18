@@ -1,11 +1,15 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+
+from .forms import LoginForm, RegistrationForm
+
 # Create your views here.
 
 """ 
 What are views?
 
-Views are basically just the back-end calculations/data modifications done before a front-end
-HTML page is displayed.
+Views are basically just the back-end modules that perform 
+calculations/data modifications done before a front-end HTML page is displayed (viewed).
 """
 
 # homepage view
@@ -14,15 +18,29 @@ def index(request):
 
 # login view
 def login(request):
-    return render(request, 'login.html')
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/')
+        """ still missing some authentication that will be implemented along with database""" 
+    else:
+        form = LoginForm()
+    return render(request, 'login.html', {'form': form})
 
 # logout view
 def logout(request):
+    """ can't really do much here until database is implemented """
     return render(request, 'index.html')
 
 # registration view
 def register(request):
-    return render(request, 'register.html')
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/')
+    else:
+        form = RegistrationForm()
+    return render(request, 'register.html', {'form': form})
 
 # fuel quote form view
 def quote(request):
