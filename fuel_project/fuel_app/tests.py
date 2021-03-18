@@ -65,3 +65,30 @@ class RegistrationTests(TestCase):
         ) 
         # verify that response is NOT a redirect (i.e. it submits anoteher GET request)
         self.assertEqual(response.status_code, 200)
+
+class QuoteFormTests(TestCase):
+    def set_up(self):
+        self.client = Client()
+
+    """ test quote page returns 200 status for GET """
+    def test_status(self):
+        response = self.client.get("/quote")
+        self.assertEqual(response.status_code, 200)
+    
+    """ validating a quote form that fits the form requirements """
+    def quote_form_is_valid(self):
+        response = self.client.post(
+            "/quote", data={'gallons': 'zeroormore', 
+            'delivery-date': 'randomdate'}
+        )
+        # verify that response is a redirect (successful POST)
+        self.assertEqual(response.status_code, 302)
+
+    """ validating a quote form that does not fit the for requirements """
+    def quote_form_is_invalid(self):
+        response = self.client.post(
+            "/quote", data={'gallons': 'lessthan0',
+            'delivery-date': 'nodate'}
+        )
+        # verify that response is NOT a redirect (i.e. it submits another GET request)
+        self.assertEqual(response.status_code, 302)

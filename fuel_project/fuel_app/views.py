@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from .forms import LoginForm, RegistrationForm
+from .forms import LoginForm, RegistrationForm, QuoteForm
 
 # Create your views here.
 
@@ -49,7 +49,15 @@ def quote(request):
     this function should involve validating such data and
     creating variables to manipulate it, returning some sort of values.
     """
-    return render(request, 'quote.html')
+    if request.method == 'POST':
+        form = QuoteForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/history')
+        else:
+            form = QuoteForm()
+    else:
+        form = QuoteForm()
+    return render(request, 'quote.html', {'form': form})
 
 # pricing module view. NOTE: do not implement yet
 def price(request):
@@ -65,7 +73,6 @@ def history(request):
     however, no db yet, so try to just pre populate the table
     with some values from this function if possible.
     """
-
     return render(request, 'history.html')
 
 # profile management view
