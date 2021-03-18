@@ -1,7 +1,6 @@
 from django import forms
 
 class LoginForm(forms.Form):
-<<<<<<< HEAD
     username = forms.CharField(max_length=20, label='',
         widget=forms.TextInput(attrs={'class': 'form-group form-control', 'placeholder':'Username'}))
     password = forms.CharField(max_length=256, label='',
