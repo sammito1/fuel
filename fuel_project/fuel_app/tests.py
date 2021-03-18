@@ -1,12 +1,67 @@
-import datetime
-
-from django.test import TestCase
-from django.utils import timezone
-from django.urls import reverse
+import unittest
+from django.test import TestCase, Client
 
 # Create your tests here.
-# Quote Form Test
-'''
-class QuoteFormTests(TestCase):
-    def testQuoteForms(self):
-'''
+
+class indexTests(TestCase):
+    def set_up(self):
+        self.client = Client()
+
+    """ test homepage returns 200 status """
+    def test_status(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+
+class LoginTests(TestCase):
+    def set_up(self):
+        self.client = Client()
+
+    """ test login page returns 200 status for GET """
+    def test_status(self):
+        response = self.client.get('/login')
+        self.assertEqual(response.status_code, 200)
+
+    """ Testing submission of a login that fits the form requirements """
+    def test_good_login(self):
+        response = self.client.post(
+            "/login", data={'username': 'shortusername', 'password': 'shortpassword'}
+        ) 
+        # verify that response is a redirect (successful POST)
+        self.assertEqual(response.status_code, 302)
+
+    """ Testing submission of a login that does not fit the form requirements """
+    def test_bad_login(self):
+        response = self.client.post(
+            "/login", data={'username': 'definitelyovertwentycharactermaximum',
+            'password': 'randompassword'}
+        ) 
+        # verify that response is NOT a redirect (i.e. it submits anoteher GET request)
+        self.assertEqual(response.status_code, 200)
+
+class RegistrationTests(TestCase):
+    def set_up(self):
+        self.client = Client()
+
+    """ test registration page returns 200 status for GET """
+    def test_status(self):
+        response = self.client.get('/register')
+        self.assertEqual(response.status_code, 200)
+
+    """ Testing submission of a registration that fits the form requirements """
+    def test_good_registration(self):
+        response = self.client.post(
+            "/register", data={'username': 'shortusername', 'password': 'shortpassword',
+            'confirm_password': 'shortconfirmation'}
+        ) 
+        # verify that response is a redirect (successful POST)
+        self.assertEqual(response.status_code, 302)
+
+    """ Testing submission of a registration that does not fit the form requirements """
+    def test_bad_registration(self):
+        response = self.client.post(
+            "/register", data={'username': 'definitelyovertwentycharactermaximum',
+            'password': 'randompassword',
+            'confirm_password': 'randompassword'}
+        ) 
+        # verify that response is NOT a redirect (i.e. it submits anoteher GET request)
+        self.assertEqual(response.status_code, 200)
