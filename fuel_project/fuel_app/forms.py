@@ -27,3 +27,18 @@ class QuoteForm(forms.Form):
     delivery_date = forms.DateField(label='Delivery Date', required=True, 
         widget=forms.DateInput(attrs={'class': 'form-group form-control col-3', 'type': 'date'}), 
         error_messages={'required': "Please select a date."})
+
+class ProfileForm(forms.Form):
+    full_name = forms.CharField(max_length=50,
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
+    address_1 = forms.CharField(max_length=100,
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
+    address_2 = forms.CharField(max_length=100, required=False,
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
+    city = forms.CharField(max_length=100,
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
+    state = forms.ChoiceField(
+        widget=forms.Select(attrs={'class': 'form-control'}),
+        choices=[('al', 'AL'), ('la', 'LA'), ('tx', 'TX')])
+    zip_code = forms.IntegerField(min_value=10000, max_value=999999999,
+        widget=forms.NumberInput(attrs={'class': 'form-control'}))

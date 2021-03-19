@@ -4,52 +4,61 @@
 
 {% block content %}
     <!-- Client Profile Management -->
-    <div class="container py-3">
-      <form action="" class="needs-validation" novalidate>
+    <div class="container pt-3 pb-5">
+      <form action="profile" method="POST" class="needs-validation" id="profile-form" novalidate>
         <h1 class="mb-3">Client Profile Management</h1>
+        {% csrf_token %}
         <div class="form-group row py-2">
           <div class="col-3">
             <label for="full-name">Full Name*</label>
-            <input type="word" id="full-name" class="form-control" min=1 max=50 required>
+            <!--<input type="word" id="full-name" class="form-control" min=1 max=50 required>-->
+            {{ form.full_name }}
             <div class="invalid-feedback">Please enter valid full name.</div>
           </div>
         </div>
 	      <div class="form-group row py-2">
           <div class="col-3">
             <label for="address-1">Address 1*</label>
-            <input type="word" id="address-1" class="form-control" min=1 max=100 required>
+            <!--<input type="word" id="address-1" class="form-control" min=1 max=100 required>-->
+            {{ form.address_1 }}
             <div class="invalid-feedback">Please enter valid address.</div>
           </div>
         </div>
 	      <div class="form-group row py-2">
           <div class="col-3">
             <label for="address-2">Address 2</label>
-            <input type="word" id="address-2" class="form-control">
+            <!--<input type="word" id="address-2" class="form-control">-->
+            {{ form.address_2 }}
           </div>
         </div>
 	      <div class="form-group row py-2">
           <div class="col-3">
             <label for="city">City*</label>
-            <input type="word" id="city" class="form-control" min=1 max=100 required>
+            <!--<input type="word" id="city" class="form-control" min=1 max=100 required>-->
+            {{ form.city }}
             <div class="invalid-feedback">Please enter valid city name.</div>
           </div>
         </div>
         <div class="form-group row py-2">
           <div class="col-3">
             <label for="state">State*</label>
-            <select name="state" id="state" class="form-control" min=0 max=2 required>
+            <!--<select name="state" id="state" class="form-control" min=0 max=2 required>
                <option value=""></option>
                <option value="al">AL</option>
                <option value="la">LA</option>
                <option value="tx">TX</option>
-            </select><div class="comment">2 character state code required</div>
+            </select>-->
+            {{ form.state }}
+            <div class="comment">2 character state code required</div>
             <div class="invalid-feedback">Please enter valid state code.</div>
           </div> 
         </div>
         <div class="form-group row py-2">
           <div class="col-3">
             <label for="zipcode">Zipcode*</label>
-            <input type="decimals" id="zipcode" class="form-control" min=5 max=9 required><div class="comment">Please type in at least 5 characters</div>
+            <!--<input type="decimals" id="zipcode" class="form-control" min=5 max=9 required>-->
+            {{ form.zip_code }}
+            <div class="comment">Please type in at least 5 characters</div>
             <div class="invalid-feedback">Please enter valid zipcode.</div>
           </div>
         </div>
