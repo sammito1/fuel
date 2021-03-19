@@ -16,6 +16,7 @@ We are using Django as our backend web framework due to its prevalence in modern
 ### *4. List who did what within the group.*
 
 * Travis:
+  * Design and implement view and automated unit tests for profile module
 * Khang:
 * Sammy:
   * Set up initial Django application
