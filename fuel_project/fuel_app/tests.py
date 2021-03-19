@@ -35,7 +35,7 @@ class LoginTests(TestCase):
             "/login", data={'username': 'definitelyovertwentycharactermaximum',
             'password': 'randompassword'}
         ) 
-        # verify that response is NOT a redirect (i.e. it submits anoteher GET request)
+        # verify that response is NOT a redirect (i.e. it submits another GET request)
         self.assertEqual(response.status_code, 200)
 
 class RegistrationTests(TestCase):
@@ -63,7 +63,7 @@ class RegistrationTests(TestCase):
             'password': 'randompassword',
             'confirm_password': 'randompassword'}
         ) 
-        # verify that response is NOT a redirect (i.e. it submits anoteher GET request)
+        # verify that response is NOT a redirect (i.e. it submits another GET request)
         self.assertEqual(response.status_code, 200)
 
 class QuoteFormTests(TestCase):
@@ -84,11 +84,40 @@ class QuoteFormTests(TestCase):
         # verify that response is a redirect (successful POST)
         self.assertEqual(response.status_code, 302)
 
-    """ validating a quote form that does not fit the for requirements """
+    """ validating a quote form that does not fit the form requirements """
     def quote_form_is_invalid(self):
         response = self.client.post(
             "/quote", data={'gallons': 'lessthan0',
             'delivery-date': 'nodate'}
         )
         # verify that response is NOT a redirect (i.e. it submits another GET request)
+        self.assertEqual(response.status_code, 200)
+
+class ProfileTests(TestCase):
+    def set_up(self):
+        self.client = Client()
+
+    """ test profile page returns 200 status for GET """
+    def test_status(self):
+        response = self.client.get('/profile')
+        self.assertEqual(response.status_code, 200)
+
+    """ validating a profile form that fits the form requirements """
+    def profile_form_is_valid(self):
+        response = self.client.post(
+            "/profile", data={'full_name': 'first middle last',
+            'address_1': '123 address dr.',
+            'city': 'my city',
+            'state': 'tx',
+            'zip_code': 77777}
+        )
+        # verify that response is a redirect (successful POST)
         self.assertEqual(response.status_code, 302)
+
+    """ validating a profile form that does not fit the form requirements """
+    def profile_form_is_invalid(self):
+        response = self.client.post(
+            "/profile", data={}
+        )
+        # verify that response is NOT a redirect (i.e. it submits another GET request)
+        self.assertEqual(response.status_code, 200)
