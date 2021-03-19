@@ -28,9 +28,10 @@ def login(request):
     return render(request, 'login.html', {'form': form})
 
 # logout view
+""" can't really do much here until database is implemented
 def logout(request):
-    """ can't really do much here until database is implemented """
     return render(request, 'index.html')
+"""
 
 # registration view
 def register(request):
@@ -60,8 +61,10 @@ def quote(request):
     return render(request, 'quote.html', {'form': form})
 
 # pricing module view. NOTE: do not implement yet
+"""
 def price(request):
     pass
+"""
 
 # fuel quote history view
 def history(request):

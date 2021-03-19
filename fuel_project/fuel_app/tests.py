@@ -93,6 +93,15 @@ class QuoteFormTests(TestCase):
         # verify that response is NOT a redirect (i.e. it submits another GET request)
         self.assertEqual(response.status_code, 200)
 
+class HistoryTests(TestCase):
+    def set_up(self):
+        self.client = Client()
+
+    """ test history page returns 200 status for GET """
+    def test_status(self):
+        response = self.client.get('/history')
+        self.assertEqual(response.status_code, 200)
+
 class ProfileTests(TestCase):
     def set_up(self):
         self.client = Client()
