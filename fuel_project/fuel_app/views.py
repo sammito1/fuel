@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from .forms import LoginForm, RegistrationForm, QuoteForm
+from .forms import LoginForm, RegistrationForm, QuoteForm, ProfileForm
 
 # Create your views here.
 
@@ -85,4 +85,10 @@ def profile(request):
     this function should validate their info and make sure it fits our requirements
     BEFORE submitting to the db (which is not implemented yet)
     """
-    return render(request, 'profile.html')
+    if request.method == 'POST':
+        form = ProfileForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/profile')
+    else:
+        form = ProfileForm()
+    return render(request, 'profile.html', {'form': form})

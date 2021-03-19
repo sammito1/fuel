@@ -14,3 +14,6 @@ __pycache__/
 __pycache__/*
 **.coverage
 .coverage
+
+# Virtual Environment Files
+/venv
