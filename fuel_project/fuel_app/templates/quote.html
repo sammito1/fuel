@@ -4,9 +4,10 @@
 
 {% block content %}
     <!-- Fuel Quote Form -->
-    <div class="container py-3">
-      <form action="" class="needs-validation" novalidate>
+    <div class="container py-3 justify-content-center">
+      <form action="quote" method="post" class="needs-validation" novalidate>
         <h1 class="mb-3">New Fuel Quote</h1>
+        <!--
         <div class="form-group row py-2">
           <div class="col-3">
             <label for="gallons">Gallons Requested</label>
@@ -25,6 +26,9 @@
             <div class="invalid-feedback">Please select a date.</div>
           </div> 
         </div>
+        -->
+        {% csrf_token %}
+        {{ form }}
         <div class="form-group py-2">
           <label for="price-per-gallon">Price per Gallon</label><br>
           <b>TBD</b>
