@@ -22,6 +22,7 @@ We reached 83% code coverage in our application according to the `coverage.py` m
 * Travis:
   * Design and implement view and automated unit tests for profile module
 * Khang:
+  * Design and implement view and automated unit tests for fuel quote module which includes list of quote history for client
 * Sammy:
   * Set up initial Django application
   * Refactor front-end HTML files to match Django templating engine syntax
