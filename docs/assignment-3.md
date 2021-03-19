@@ -13,6 +13,10 @@ We are using Django as our backend web framework due to its prevalence in modern
 
 ### *3. Provide code coverage report*
 
+![Coverage report](screenshots/coverage.png)
+
+We reached 83% code coverage in our application according to the `coverage.py` module (https://coverage.readthedocs.io/en/coverage-5.5/)
+
 ### *4. List who did what within the group.*
 
 * Travis:
