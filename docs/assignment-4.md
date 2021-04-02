@@ -56,5 +56,5 @@ create table "FuelQuote"
 ### *4. List who did what within the group.*
 
 * Travis:
-* Khang:
+* Khang: Completed views and unit tests for Fuel Quote Module
 * Sammy:
