@@ -25,6 +25,25 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
+      {% if user.is_authenticated %}
+      <!-- Navbar contents if LOGGED IN -->
+        <div class="collapse navbar-collapse" id="navbar-menu">
+          <span class="navbar-text mt-1">
+            Hello, {{ user.get_username }}
+          </span>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/profile">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/quote">Quote</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Log out</a>
+            </li>
+          </ul>
+        </div>
+      {% else %}
       <!-- Navbar contents if LOGGED OUT -->
       <div class="collapse navbar-collapse" id="navbar-menu">
         <ul class="navbar-nav ml-auto">
@@ -36,21 +55,7 @@
           </li>
         </ul>
       </div>
-      <!-- Navbar contents if LOGGED IN
-      <div class="collapse navbar-collapse" id="navbar-menu">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/profile">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/quote">Quote</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">Log out</a>
-          </li>
-        </ul>
-      </div>
-      -->
+      {% endif %}
     </nav>
 
     <div id="content">

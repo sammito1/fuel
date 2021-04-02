@@ -1,6 +1,9 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.forms import modelform_factory
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.decorators import login_required
 
 from .forms import LoginForm, RegistrationForm, QuoteForm, ProfileForm
 from .models import Quote
@@ -18,32 +21,20 @@ calculations/data modifications done before a front-end HTML page is displayed (
 def index(request):
     return render(request, 'index.html')
 
-# login view
-def login(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            return HttpResponseRedirect('/')
-        """ still missing some authentication that will be implemented along with database""" 
-    else:
-        form = LoginForm()
-    return render(request, 'login.html', {'form': form})
-
-# logout view
-""" can't really do much here until database is implemented
-def logout(request):
-    return render(request, 'index.html')
-"""
-
 # registration view
 def register(request):
     if request.method == 'POST':
-        form = RegistrationForm(request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
             return HttpResponseRedirect('/')
     else:
-        form = RegistrationForm()
-    return render(request, 'register.html', {'form': form})
+        form = UserCreationForm()
+    return render(request, './registration/register.html', {'form': form})
 
 # fuel quote form view
 def quote(request):
@@ -72,6 +63,7 @@ def price(request):
 """
 
 # fuel quote history view
+@login_required
 def history(request):
     """
     suppose a client goes to their history page..
@@ -85,6 +77,7 @@ def history(request):
     return render(request, 'history.html', {'fuel_quote': fuel_quote})
 
 # profile management view
+@login_required
 def profile(request):
     """
     suppose a client wants to view their profile.

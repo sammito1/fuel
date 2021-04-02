@@ -1,5 +1,6 @@
 from django import forms
 
+""" Abandoned in favor of default Django Forms """
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=20, label='',
         widget=forms.TextInput(attrs={'class': 'form-group form-control', 'placeholder':'Username'}),
@@ -16,6 +17,7 @@ class RegistrationForm(forms.Form):
         widget=forms.TextInput(attrs={'class': 'form-group form-control', 'placeholder':'Password'}))
     confirm_password = forms.CharField(max_length=256, label='',
         widget=forms.TextInput(attrs={'class': 'form-group form-control', 'placeholder':'Confirm password'}))
+""" ----------- """
 
 class QuoteForm(forms.Form):
     gallons = forms.IntegerField(label='Gallons Requested', min_value=0, required=True,
