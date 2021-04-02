@@ -19,7 +19,7 @@
 	      <div class="form-group row py-2">
           <div class="col-3">
             <label for="address-1">Address 1*</label>
-            <!--<input type="word" id="address-1" class="form-control" min=1 max=100 required>-->
+            <!--<input type="word" id="address-1" class="form-control" min=1 max=200 required>-->
             {{ form.address_1 }}
             <div class="invalid-feedback">Please enter valid address.</div>
           </div>
@@ -27,7 +27,7 @@
 	      <div class="form-group row py-2">
           <div class="col-3">
             <label for="address-2">Address 2</label>
-            <!--<input type="word" id="address-2" class="form-control">-->
+            <!--<input type="word" id="address-2" class="form-control" min=1 max=200>-->
             {{ form.address_2 }}
           </div>
         </div>
@@ -56,7 +56,7 @@
         <div class="form-group row py-2">
           <div class="col-3">
             <label for="zipcode">Zipcode*</label>
-            <!--<input type="decimals" id="zipcode" class="form-control" min=5 max=9 required>-->
+            <!--<input type="decimals" id="zipcode" class="form-control" min=5 max=5 required>-->
             {{ form.zip_code }}
             <div class="comment">Please type in at least 5 characters</div>
             <div class="invalid-feedback">Please enter valid zipcode.</div>

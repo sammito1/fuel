@@ -6,7 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.decorators import login_required
 
 from .forms import LoginForm, RegistrationForm, QuoteForm, ProfileForm
-from .models import Quote
+from .models import Client, Quote
 
 # Create your views here.
 
@@ -87,9 +87,24 @@ def profile(request):
     this function should validate their info and make sure it fits our requirements
     BEFORE submitting to the db (which is not implemented yet)
     """
-    if request.method == 'POST':
+    curr_user = request.user
+    if request.method == 'POST' and curr_user.is_authenticated:
         form = ProfileForm(request.POST)
         if form.is_valid():
+            c_name = request.POST['full_name']
+            c_address = request.POST['address_1']
+            c_city = request.POST['city']
+            c_state = request.POST['state']
+            c_zipcode = request.POST['zip_code']
+
+            curr_client = Client(user=curr_user.id,
+            name=c_name,
+            address=c_address,
+            city=c_city,
+            state=c_state,
+            zipcode=c_zipcode)
+            curr_client.save()
+
             return HttpResponseRedirect('/profile')
     else:
         form = ProfileForm()

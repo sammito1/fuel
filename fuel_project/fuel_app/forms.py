@@ -33,14 +33,14 @@ class QuoteForm(forms.Form):
 class ProfileForm(forms.Form):
     full_name = forms.CharField(max_length=50,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
-    address_1 = forms.CharField(max_length=100,
+    address_1 = forms.CharField(max_length=200,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
-    address_2 = forms.CharField(max_length=100, required=False,
+    address_2 = forms.CharField(max_length=200, required=False,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
     city = forms.CharField(max_length=100,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
     state = forms.ChoiceField(
         widget=forms.Select(attrs={'class': 'form-control'}),
         choices=[('al', 'AL'), ('la', 'LA'), ('tx', 'TX')])
-    zip_code = forms.IntegerField(min_value=10000, max_value=999999999,
+    zip_code = forms.IntegerField(min_value=10000, max_value=99999,
         widget=forms.NumberInput(attrs={'class': 'form-control'}))
