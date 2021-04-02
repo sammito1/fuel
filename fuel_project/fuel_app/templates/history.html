@@ -9,20 +9,24 @@
       <table>
          <tr>
             <th>Quote #></th>
-	    <th>Gallons Requested></th>
+	         <th>Gallons Requested></th>
             <th>Delivery Address></th>
             <th>Delivery Date></th>
             <th>Suggested Price / gallon></th>
             <th>Total Amount Due></th>
          </tr>
+         {% if fuel_quote %}
+         {% for f in fuel_quote %}
          <tr>
-            <td>TBD</td>
-            <td>TBD</td>
-            <td>TBD</td>
-            <td>TBD</td>
-            <td>TBD</td>
-            <td>TBD</td>
+            <td>{{ f.quote_number }}</td>
+            <td>{{ f.gallons_requested }}</td>
+            <td>{{ f.delivery_address }}</td>
+            <td>{{ f.delivery_date }}</td>
+            <td>{{ f.suggested_price_gallon }}</td>
+            <td>{{ f.total_amount_due }}</td>
          </tr>
+         {% endfor %}
+         {% endif %}
     </table>
     </div>
 {% endblock %}
