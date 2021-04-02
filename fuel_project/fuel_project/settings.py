@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '6on^iy&c07sb(5znv@ulw3m$yi6=eq#et8arxr*yn0^9fv0#6*'
+SECRET_KEY = "6on^iy&c07sb(5znv@ulw3m$yi6=eq#et8arxr*yn0^9fv0#6*"
+# SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -76,8 +77,11 @@ WSGI_APPLICATION = 'fuel_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': 'ec2-3-233-43-103.compute-1.amazonaws.com',
+        'NAME': 'd9kobuq2e99dup',
+        'USER': 'lkleawmtbztmkg',
+        'PASSWORD': '4fa015ab87df1a33f0cd713c19b9e691fd4f2cbe8e0ef8288a2a81b6bf162dc3',
     }
 }
 
