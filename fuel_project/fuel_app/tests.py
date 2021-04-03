@@ -126,7 +126,11 @@ class ProfileTests(TestCase):
     """ validating a profile form that does not fit the form requirements """
     def profile_form_is_invalid(self):
         response = self.client.post(
-            "/profile", data={}
+            "/profile", data={'full_name': 'no full name',
+            'address_1': 'no address',
+            'city': 'no city',
+            'state': 'none',
+            'zip_code': 0}
         )
         # verify that response is NOT a redirect (i.e. it submits another GET request)
         self.assertEqual(response.status_code, 200)

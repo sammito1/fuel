@@ -95,25 +95,31 @@ def profile(request):
     this function should validate their info and make sure it fits our requirements
     BEFORE submitting to the db (which is not implemented yet)
     """
-    curr_user = request.user
+    ProfileForm = modelform_factory(Client, fields =('user', 'name', 'address',
+    'city', 'state', 'email', 'zipcode',))
     if request.method == 'POST' and curr_user.is_authenticated:
         form = ProfileForm(request.POST)
         if form.is_valid():
-            c_name = request.POST['full_name']
-            c_address = request.POST['address_1']
-            c_city = request.POST['city']
-            c_state = request.POST['state']
-            c_zipcode = request.POST['zip_code']
+            c_name = request.POST('name')
+            c_address = request.POST('address')
+            c_city = request.POST('city')
+            c_state = request.POST('state')
+            c_email = request.POST('email')
+            c_zipcode = request.POST('zip_code')
 
+            curr_user = request.user
             curr_client = Client(user=curr_user,
             name=c_name,
             address=c_address,
             city=c_city,
             state=c_state,
+            email=c_email,
             zipcode=c_zipcode)
             curr_client.save()
 
             return HttpResponseRedirect('/profile')
+        else:
+            form = ProfileForm()
     else:
         form = ProfileForm()
     return render(request, 'profile.html', {'form': form})
