@@ -4,7 +4,7 @@
 
 {% block content %}
     <!-- Fuel Quote Form -->
-    <div class="container py-3 justify-content-center">
+    <div class="container py-3 text-center">
       <form action="quote" method="post" class="needs-validation" novalidate>
         <h1 class="mb-3">New Fuel Quote</h1>
         <!--
@@ -28,8 +28,27 @@
         </div>
         -->
         {% csrf_token %}
-        {{ form }}
         <div class="form-group py-2">
+          {{ form.price.label_tag }}
+          {{ form.price }}
+        </div>
+        <div class="form-group py-2">
+          {{ form.date.label_tag }}
+          {{ form.date }}
+        </div>
+        <div class="form-group py-2">
+          {{ form.address.label_tag }}
+          {{ form.address }}
+        </div>
+        <div class="form-group py-2">
+          {{ form.gallons.label_tag }}
+          {{ form.gallons }}
+        </div>
+        <div class="form-group py-2">
+          {{ form.total_price.label_tag }}
+          {{ form.total_price }}
+        </div>
+        <div>
           <label for="price-per-gallon">Price per Gallon</label><br>
           <b>TBD</b>
         </div>
@@ -39,6 +58,7 @@
         </div>  
         <button type="submit" class="btn btn-primary">Submit</button>
         <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+        {{ form.errors }}
       </form>
     </div>
     

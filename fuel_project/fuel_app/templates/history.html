@@ -18,12 +18,12 @@
          {% if fuel_quote %}
          {% for f in fuel_quote %}
          <tr>
-            <td>{{ f.quote_number }}</td>
-            <td>{{ f.gallons_requested }}</td>
-            <td>{{ f.delivery_address }}</td>
-            <td>{{ f.delivery_date }}</td>
-            <td>{{ f.suggested_price_gallon }}</td>
-            <td>{{ f.total_amount_due }}</td>
+            <td>{{ f.id }}</td>
+            <td>{{ f.gallons }}</td>
+            <td>{{ f.address }}</td>
+            <td>{{ f.date }}</td>
+            <td>{{ f.price }}</td>
+            <td>{{ f.total_price }}</td>
          </tr>
          {% endfor %}
          {% endif %}

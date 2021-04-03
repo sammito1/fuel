@@ -4,6 +4,7 @@ from django.forms import modelform_factory
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from .forms import LoginForm, RegistrationForm, QuoteForm, ProfileForm
 from .models import Client, Quote
@@ -45,10 +46,17 @@ def quote(request):
     """
     QuoteForm = modelform_factory(Quote, fields=('user', 'price', 'date', 
     'address', 'gallons', 'total_price',))
-    if request.method == 'POST':
+    if request.method == 'POST' and request.user.is_authenticated:
         form = QuoteForm(request.POST)
         if form.is_valid():
-            form.save()
+            price = request.POST('price')
+            date = request.POST('date')
+            address = request.POST('address')
+            gallons = request.POST('gallons')
+            total_price = request.POST('total_price')
+            new_quote = Quote(user=request.user, price=price, date=date, address=address,
+                gallons=gallons, total_price=total_price)
+            new_quote.save()
             return HttpResponseRedirect('/history')
         else:
             form = QuoteForm()
@@ -73,7 +81,7 @@ def history(request):
     however, no db yet, so try to just pre populate the table
     with some values from this function if possible.
     """
-    fuel_quote = Quote.objects.all()
+    fuel_quote = Quote.objects.all().filter(user=request.user).values()
     return render(request, 'history.html', {'fuel_quote': fuel_quote})
 
 # profile management view
@@ -97,7 +105,7 @@ def profile(request):
             c_state = request.POST['state']
             c_zipcode = request.POST['zip_code']
 
-            curr_client = Client(user=curr_user.id,
+            curr_client = Client(user=curr_user,
             name=c_name,
             address=c_address,
             city=c_city,
