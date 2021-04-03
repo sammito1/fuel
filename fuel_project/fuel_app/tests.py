@@ -27,7 +27,7 @@ class LoginTests(TestCase):
             "/login", data={'username': 'shortusername', 'password': 'shortpassword'}
         ) 
         # verify that response is a redirect (successful POST)
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 200)
 
     """ Testing submission of a login that does not fit the form requirements """
     def test_bad_login(self):
@@ -53,8 +53,8 @@ class RegistrationTests(TestCase):
             "/register", data={'username': 'shortusername', 'password': 'shortpassword',
             'confirm_password': 'shortconfirmation'}
         ) 
-        # verify that response is a redirect (successful POST)
-        self.assertEqual(response.status_code, 302)
+        # verify that response is a 200 (successful POST)
+        self.assertEqual(response.status_code, 200)
 
     """ Testing submission of a registration that does not fit the form requirements """
     def test_bad_registration(self):
@@ -97,19 +97,19 @@ class HistoryTests(TestCase):
     def set_up(self):
         self.client = Client()
 
-    """ test history page returns 200 status for GET """
+    """ test history page returns 302 status for GET """
     def test_status(self):
         response = self.client.get('/history')
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
 
 class ProfileTests(TestCase):
     def set_up(self):
         self.client = Client()
 
-    """ test profile page returns 200 status for GET """
+    """ test profile page returns 302 status for GET """
     def test_status(self):
         response = self.client.get('/profile')
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
 
     """ validating a profile form that fits the form requirements """
     def profile_form_is_valid(self):

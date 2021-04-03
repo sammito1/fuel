@@ -77,6 +77,13 @@ WSGI_APPLICATION = 'fuel_project.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.sqlite3'
+    }
+}
+
+"""
+DATABASES = {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'HOST': 'ec2-3-233-43-103.compute-1.amazonaws.com',
         'NAME': 'd9kobuq2e99dup',
@@ -84,6 +91,7 @@ DATABASES = {
         'PASSWORD': '4fa015ab87df1a33f0cd713c19b9e691fd4f2cbe8e0ef8288a2a81b6bf162dc3',
     }
 }
+"""
 
 
 # Password validation
