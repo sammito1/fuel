@@ -75,13 +75,14 @@ WSGI_APPLICATION = 'fuel_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+""" activate this to enable testing functionality
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3'
     }
 }
-
 """
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -91,7 +92,6 @@ DATABASES = {
         'PASSWORD': '4fa015ab87df1a33f0cd713c19b9e691fd4f2cbe8e0ef8288a2a81b6bf162dc3',
     }
 }
-"""
 
 
 # Password validation
