@@ -30,11 +30,10 @@ def register(request):
 
 # fuel quote form view
 def quote(request):
-    """
-    suppose you receive data through the form..
-    this function should involve validating such data and
-    creating variables to manipulate it, returning some sort of values.
-    """
+    current_client = Client.objects.filter(user=request.user).first()
+    # if the current user has not updated their client profile, return error page directing them to do so
+    if not current_client:
+        return render(request, 'quote_error.html')
     QuoteForm = modelform_factory(Quote, fields=('user', 'price', 'date', 
     'address', 'gallons', 'total_price',))
     if request.method == 'POST' and request.user.is_authenticated:
