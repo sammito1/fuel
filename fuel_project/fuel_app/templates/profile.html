@@ -5,8 +5,57 @@
 {% block content %}
     <!-- Client Profile Management -->
     <div class="container pt-3 pb-5">
-      <form action="profile" method="POST" class="needs-validation" id="profile-form" novalidate>
         <h1 class="mb-3">Client Profile Management</h1>
+        <h1 class="mb-3">Profile</h1>
+        <div class="form-group row py-2">
+          <div class="col-3">
+            <label for="full-name">Full Name</label>
+          </div> 
+          <div class="col-3">
+            <label for="full-name">TBD</label>
+          </div>
+        </div>
+	      <div class="form-group row py-2">
+          <div class="col-3">
+            <label for="address-1">Address 1</label>
+          </div> 
+          <div class="col-3">
+            <label for="address-1">TBD</label>
+          </div>
+        </div>
+	      <div class="form-group row py-2">
+          <div class="col-3">
+            <label for="address-2">Address 2</label>
+          </div> 
+          <div class="col-3">
+            <label for="address-2">TBD</label>
+          </div>
+        </div>
+	      <div class="form-group row py-2">
+          <div class="col-3">
+            <label for="city">City</label>
+          </div> 
+          <div class="col-3">
+            <label for="city">TBD</label>
+          </div>
+        </div>
+        <div class="form-group row py-2">
+          <div class="col-3">
+            <label for="state">State</label>
+          </div> 
+          <div class="col-3">
+            <label for="state">TBD</label>
+          </div> 
+        </div>
+        <div class="form-group row py-2">
+          <div class="col-3">
+            <label for="zipcode">Zipcode</label>
+          </div> 
+          <div class="col-3">
+            <label for="zipcode">TBD</label>
+          </div>
+        </div>
+        <h1 class="mb-3">Edit Profile</h1>
         {% csrf_token %}
         <div class="form-group row py-2">
           <div class="col-3">
