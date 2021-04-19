@@ -79,15 +79,9 @@ def profile(request):
             c_state = form.cleaned_data.get('state')
             c_zipcode = form.cleaned_data.get('zipcode')
 
-            curr_client = Client(
-                user=request.user,
-                name=c_name,
-                address=c_address,
-                city=c_city,
-                state=c_state,
-                zipcode=c_zipcode
-                )
-            curr_client.save()
+            obj, created = Client.objects.update_or_create(user=request.user,
+                defaults={'name': c_name, 'address': c_address, 'city': c_city,
+                'state': c_state, 'zipcode': c_zipcode})
             return HttpResponseRedirect('/profile')
         else:
             form = ProfileForm()
