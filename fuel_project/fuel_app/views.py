@@ -70,6 +70,7 @@ def history(request):
 # profile management view
 @login_required
 def profile(request):
+    current_client = Client.objects.filter(user=request.user).first()
     if request.method == 'POST' and request.user.is_authenticated:
         form = ProfileForm(request.POST)
         if form.is_valid():
@@ -87,4 +88,4 @@ def profile(request):
             form = ProfileForm()
     else:
         form = ProfileForm()
-    return render(request, 'profile.html', {'form': form})
+    return render(request, 'profile.html', {'form': form, 'current_profile': current_client})

@@ -35,8 +35,6 @@ class ProfileForm(forms.Form):
         widget=forms.TextInput(attrs={'class': 'form-control'}))
     address_1 = forms.CharField(label="Address 1*", max_length=200, required=True,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
-    address_2 = forms.CharField(label="Address 2", max_length=200, required=False,
-        widget=forms.TextInput(attrs={'class': 'form-control'}))
     city = forms.CharField(label="City*", max_length=100, required=True,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
     state = forms.ChoiceField(label="State*", required=True,

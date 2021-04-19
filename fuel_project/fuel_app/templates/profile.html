@@ -6,13 +6,13 @@
     <!-- Client Profile Management -->
     <div class="container pt-3 pb-5">
         <h1 class="mb-3">Client Profile Management</h1>
-        <h1 class="mb-3">Profile</h1>
+        <h2 class="mb-3">Profile</h2>
         <div class="form-group row py-2">
           <div class="col-3">
             <label for="full-name">Full Name</label>
           </div> 
           <div class="col-3">
-            <label for="full-name">TBD</label>
+            <label for="full-name">{{ current_profile.name | default_if_none:"TBD" }}</label>
           </div>
         </div>
 	      <div class="form-group row py-2">
@@ -20,15 +20,7 @@
             <label for="address-1">Address 1</label>
           </div> 
           <div class="col-3">
-            <label for="address-1">TBD</label>
-          </div>
-        </div>
-	      <div class="form-group row py-2">
-          <div class="col-3">
-            <label for="address-2">Address 2</label>
-          </div> 
-          <div class="col-3">
-            <label for="address-2">TBD</label>
+            <label for="address-1">{{ current_profile.address | default_if_none:"TBD"}}</label>
           </div>
         </div>
 	      <div class="form-group row py-2">
@@ -36,7 +28,7 @@
             <label for="city">City</label>
           </div> 
           <div class="col-3">
-            <label for="city">TBD</label>
+            <label for="city">{{ current_profile.city | default_if_none:"TBD" }} </label>
           </div>
         </div>
         <div class="form-group row py-2">
@@ -44,7 +36,7 @@
             <label for="state">State</label>
           </div> 
           <div class="col-3">
-            <label for="state">TBD</label>
+            <label for="state">{{ current_profile.state | default_if_none:"TBD" }}</label>
           </div> 
         </div>
         <div class="form-group row py-2">
@@ -52,11 +44,11 @@
             <label for="zipcode">Zipcode</label>
           </div> 
           <div class="col-3">
-            <label for="zipcode">TBD</label>
+            <label for="zipcode">{{ current_profile.zipcode | default_if_none:"TBD"}} </label>
           </div>
       </div>
-      <h1 class="mb-3">Edit Profile</h1>
-      <form action="profile" method="post" class="container mt-5" id="profile-form">
+      <h2 class="mb-3">Edit Profile</h2>
+      <form action="profile" method="post" class="container mt-5 text-center" id="profile-form">
         {% csrf_token %}
         <div class="form-group row py-2">
           <div class="col-3">
