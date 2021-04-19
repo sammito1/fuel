@@ -6,17 +6,8 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
-from .forms import LoginForm, RegistrationForm, QuoteForm, ProfileForm
+from .forms import QuoteForm, ProfileForm
 from .models import Client, Quote
-
-# Create your views here.
-
-""" 
-What are views?
-
-Views are basically just the back-end modules that perform 
-calculations/data modifications done before a front-end HTML page is displayed (viewed).
-"""
 
 # homepage view
 def index(request):
@@ -73,50 +64,30 @@ def price(request):
 # fuel quote history view
 @login_required
 def history(request):
-    """
-    suppose a client goes to their history page..
-    if the db was ready, we'd do a SELECT statement from the DB
-    and display the table values in the history table.
-
-    however, no db yet, so try to just pre populate the table
-    with some values from this function if possible.
-    """
     fuel_quote = Quote.objects.all().filter(user=request.user).values()
     return render(request, 'history.html', {'fuel_quote': fuel_quote})
 
 # profile management view
 @login_required
 def profile(request):
-    """
-    suppose a client wants to view their profile.
-    when they go to the profile page, they should be able to:
-    1. Display the profile information
-    2. Edit the profile information directly in the same page
-    this function should validate their info and make sure it fits our requirements
-    BEFORE submitting to the db (which is not implemented yet)
-    """
-    ProfileForm = modelform_factory(Client, fields =('user', 'name', 'address',
-    'city', 'state', 'email', 'zipcode',))
-    if request.method == 'POST' and curr_user.is_authenticated:
+    if request.method == 'POST' and request.user.is_authenticated:
         form = ProfileForm(request.POST)
         if form.is_valid():
-            c_name = request.POST('name')
-            c_address = request.POST('address')
-            c_city = request.POST('city')
-            c_state = request.POST('state')
-            c_email = request.POST('email')
-            c_zipcode = request.POST('zip_code')
+            c_name = form.cleaned_data.get('name')
+            c_address = form.cleaned_data.get('address_1')
+            c_city = form.cleaned_data.get('city')
+            c_state = form.cleaned_data.get('state')
+            c_zipcode = form.cleaned_data.get('zipcode')
 
-            curr_user = request.user
-            curr_client = Client(user=curr_user,
-            name=c_name,
-            address=c_address,
-            city=c_city,
-            state=c_state,
-            email=c_email,
-            zipcode=c_zipcode)
+            curr_client = Client(
+                user=request.user,
+                name=c_name,
+                address=c_address,
+                city=c_city,
+                state=c_state,
+                zipcode=c_zipcode
+                )
             curr_client.save()
-
             return HttpResponseRedirect('/profile')
         else:
             form = ProfileForm()

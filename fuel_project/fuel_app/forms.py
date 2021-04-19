@@ -31,16 +31,16 @@ class QuoteForm(forms.Form):
         error_messages={'required': "Please select a date."})
 
 class ProfileForm(forms.Form):
-    full_name = forms.CharField(max_length=50,
+    name = forms.CharField(label="Full Name*", max_length=50, required=True,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
-    address_1 = forms.CharField(max_length=200,
+    address_1 = forms.CharField(label="Address 1*", max_length=200, required=True,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
-    address_2 = forms.CharField(max_length=200, required=False,
+    address_2 = forms.CharField(label="Address 2", max_length=200, required=False,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
-    city = forms.CharField(max_length=100,
+    city = forms.CharField(label="City*", max_length=100, required=True,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
-    state = forms.ChoiceField(
+    state = forms.ChoiceField(label="State*", required=True,
         widget=forms.Select(attrs={'class': 'form-control'}),
         choices=[('al', 'AL'), ('la', 'LA'), ('tx', 'TX')])
-    zip_code = forms.IntegerField(min_value=10000, max_value=99999,
+    zipcode = forms.IntegerField(label="Zip code*", min_value=0, max_value=99999, required=True,
         widget=forms.NumberInput(attrs={'class': 'form-control'}))

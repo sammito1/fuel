@@ -9,7 +9,7 @@ class Client(models.Model):
     address = models.CharField(max_length=200)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=50)
-    email = models.EmailField()
+    # email = models.EmailField()
     zipcode = models.CharField(max_length=5)
 
 class Quote(models.Model):
