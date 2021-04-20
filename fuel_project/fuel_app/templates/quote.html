@@ -64,9 +64,22 @@
           event.stopPropagation();
         }
         form.classList.add('was-validated');
-      })
+      });
       form.addEventListener('reset', function(event) {
         form.classList.remove('was-validated');
-      })
+      });
+      /**
+      $(document).ready(function (){
+          $('#id_gallons, #id_date, #id_address').change(function(){
+              if($("#id_gallons").val().length && $("#id_date").val().length && $("#id_address").val().length)){
+                      $("#get-quote").prop('disabled', false);
+                      $("#submit-quote").prop('disabled', false);
+              } else {
+                      $("#get-quote").prop('disabled', true);
+                      $("#submit-quote").prop('disabled', true);
+              }
+          });
+      });
+      **/
     </script>
 {% endblock %}
