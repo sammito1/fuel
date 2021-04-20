@@ -40,23 +40,23 @@
           {{ form.address.label_tag }}
           {{ form.address }}
         </div>
-        <div>
-          <label for="price-per-gallon">Price per Gallon</label><br>
-          <b>TBD</b>
+        <div class="form-group py-2">
+          {{ form.price.label_tag }}
+          {{ form.price }}
         </div>
         <div class="form-group py-2">
-          <label for="total">Total Amount Due</label><br>
-          <b>TBD</b>
+          {{ form.total_price.label_tag }}
+          {{ form.total_price }}
         </div>  
-        <button type="button" id="get-quote" class="btn btn-dark">Get Quote</button>
+        <button type="button" id="get-quote" class="btn btn-dark" onclick="calculatePrice()">Get Quote</button>
         <button type="submit" id="submit-quote" class="btn btn-primary">Submit Quote</button>
         <button type="reset" id="cancel" class="btn btn-outline-secondary">Cancel</button>
         {{ form.errors }}
       </form>
     </div>
     
-    <!-- Form Validation -->
     <script>
+      // Form Validation
       var form = document.querySelector('.needs-validation');
       form.addEventListener('submit', function(event) {
         if (form.checkValidity() === false) {
@@ -68,5 +68,34 @@
       form.addEventListener('reset', function(event) {
         form.classList.remove('was-validated');
       })
+
+      // Pricing Module
+      function calculatePrice() {
+        if ($("#id_gallons").val() < 0) {
+          $("#id_gallons").val(0)
+          return;
+        }
+        let current_price = 1.50;
+        let location_factor = 0.04;
+        if ("{{current_profile.state}}".toUpperCase() === "TX") {
+          location_factor = 0.02;
+        }
+        let history_factor = 0;
+        if ("{{quote_count}}" > 0) {
+          history_factor = 0.01;
+        }
+        let gallons_factor = 0.03;
+        if ($("#id_gallons").val() > 1000) {
+          gallons_factor = 0.02;
+        }
+        let profit_factor = 0.1;
+
+        let margin = current_price * (location_factor - history_factor + gallons_factor + profit_factor);
+        let suggested = current_price + margin;
+        let total = suggested * $("#id_gallons").val();
+        
+        $("#id_price").val(suggested.toFixed(2));
+        $("#id_total_price").val(total.toFixed(2));
+      }
     </script>
 {% endblock %}

@@ -15,8 +15,8 @@ class Client(models.Model):
 class Quote(models.Model):
     # by default, there is a field called id which is the pk of the table, so no need to specify it
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    price = models.DecimalField(max_digits=10, decimal_places=4)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     date = models.DateField()
     address = models.CharField(max_length=100)
     gallons = models.IntegerField()
-    total_price = models.DecimalField(max_digits=20, decimal_places=4)
+    total_price = models.DecimalField(max_digits=20, decimal_places=2)

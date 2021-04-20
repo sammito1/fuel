@@ -21,14 +21,18 @@ class RegistrationForm(forms.Form):
 
 class QuoteForm(forms.Form):
     gallons = forms.IntegerField(label='Gallons Requested', min_value=0, required=True,
-        widget=forms.NumberInput(attrs={'class': 'form-group form-control col-3', 'placeholder': 0}),  
+        widget=forms.NumberInput(attrs={'class': 'form-control col-2 mx-auto', 'placeholder': 0}),  
         error_messages={'required': "Please enter a valid number of gallons."})
     address = forms.CharField(max_length=95, label='Delivery Address', required=True,
-        widget=forms.TextInput(attrs={'class': 'form-group form-control col-3', 'placeholder':'Address'}),
+        widget=forms.TextInput(attrs={'class': 'form-control col-3 mx-auto', 'placeholder':'Address'}),
         error_messages={'required': 'Please enter a valid address'})
-    delivery_date = forms.DateField(label='Delivery Date', required=True, 
-        widget=forms.DateInput(attrs={'class': 'form-group form-control col-3', 'type': 'date'}), 
+    date = forms.DateField(label='Delivery Date', required=True, 
+        widget=forms.DateInput(attrs={'class': 'form-control col-2 mx-auto', 'type': 'date'}), 
         error_messages={'required': "Please select a date."})
+    price = forms.FloatField(label='Price Per Gallon:',
+        widget=forms.NumberInput(attrs={'class': 'form-control col-2 mx-auto', 'readonly': 'readonly'}))
+    total_price = forms.FloatField(label='Total Amount Due:',
+        widget=forms.NumberInput(attrs={'class': 'form-control col-2 mx-auto', 'readonly': 'readonly'}))
 
 class ProfileForm(forms.Form):
     name = forms.CharField(label="Full Name*", max_length=50, required=True,

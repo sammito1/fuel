@@ -79,7 +79,7 @@ class QuoteFormTests(TestCase):
     def quote_form_is_valid(self):
         response = self.client.post(
             "/quote", data={'gallons': 'zeroormore', 
-            'delivery-date': 'randomdate'}
+            'date': 'randomdate'}
         )
         # verify that response is a redirect (successful POST)
         self.assertEqual(response.status_code, 302)
@@ -88,7 +88,7 @@ class QuoteFormTests(TestCase):
     def quote_form_is_invalid(self):
         response = self.client.post(
             "/quote", data={'gallons': 'lessthan0',
-            'delivery-date': 'nodate'}
+            'date': 'nodate'}
         )
         # verify that response is NOT a redirect (i.e. it submits another GET request)
         self.assertEqual(response.status_code, 200)

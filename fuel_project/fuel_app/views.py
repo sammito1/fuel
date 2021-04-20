@@ -29,21 +29,21 @@ def register(request):
     return render(request, './registration/register.html', {'form': form})
 
 # fuel quote form view
+@login_required
 def quote(request):
     current_client = Client.objects.filter(user=request.user).first()
     # if the current user has not updated their client profile, return error page directing them to do so
     if not current_client:
         return render(request, 'quote_error.html')
-    QuoteForm = modelform_factory(Quote, fields=('user', 'price', 'date', 
-    'address', 'gallons', 'total_price',))
+    quote_count = Quote.objects.filter(user=request.user).count()
     if request.method == 'POST' and request.user.is_authenticated:
         form = QuoteForm(request.POST)
         if form.is_valid():
-            price = request.POST('price')
-            date = request.POST('date')
-            address = request.POST('address')
-            gallons = request.POST('gallons')
-            total_price = request.POST('total_price')
+            price = form.cleaned_data.get('price')
+            date = form.cleaned_data.get('date')
+            address = form.cleaned_data.get('address')
+            gallons = form.cleaned_data.get('gallons')
+            total_price = form.cleaned_data.get('total_price')
             new_quote = Quote(user=request.user, price=price, date=date, address=address,
                 gallons=gallons, total_price=total_price)
             new_quote.save()
@@ -52,18 +52,12 @@ def quote(request):
             form = QuoteForm()
     else:
         form = QuoteForm()
-    return render(request, 'quote.html', {'form': form})
-
-# pricing module view. NOTE: do not implement yet
-"""
-def price(request):
-    pass
-"""
+    return render(request, 'quote.html', {'form': form, 'current_profile': current_client, 'quote_count': quote_count})
 
 # fuel quote history view
 @login_required
 def history(request):
-    fuel_quote = Quote.objects.all().filter(user=request.user).values()
+    fuel_quote = Quote.objects.all().filter(user=request.user).order_by('-id')
     return render(request, 'history.html', {'fuel_quote': fuel_quote})
 
 # profile management view
