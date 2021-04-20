@@ -73,7 +73,7 @@ class QuoteFormTests(TestCase):
     """ test quote page returns 200 status for GET """
     def test_status(self):
         response = self.client.get("/quote")
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
     
     """ validating a quote form that fits the form requirements """
     def quote_form_is_valid(self):
