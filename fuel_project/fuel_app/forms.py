@@ -23,7 +23,7 @@ class QuoteForm(forms.Form):
     gallons = forms.IntegerField(label='Gallons Requested', min_value=0, required=True,
         widget=forms.NumberInput(attrs={'class': 'form-group form-control col-3', 'placeholder': 0}),  
         error_messages={'required': "Please enter a valid number of gallons."})
-    address = forms.CharField(max_length=95, label='Delivery Address',
+    address = forms.CharField(max_length=95, label='Delivery Address', required=True,
         widget=forms.TextInput(attrs={'class': 'form-group form-control col-3', 'placeholder':'Address'}),
         error_messages={'required': 'Please enter a valid address'})
     delivery_date = forms.DateField(label='Delivery Date', required=True, 
